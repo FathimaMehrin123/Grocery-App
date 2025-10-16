@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/constants/appcolor.dart';
 import 'package:grocery_app/constants/apptext.dart';
 import 'package:grocery_app/screens/loginscreen.dart';
-import 'package:grocery_app/screens/mainscreen.dart';
+
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});

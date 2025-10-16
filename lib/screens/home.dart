@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/constants/appcolor.dart';
+import 'package:grocery_app/constants/apptext.dart';
 import 'package:grocery_app/constants/categories.dart';
 import 'package:grocery_app/data.dart/category_data.dart';
 import 'package:grocery_app/model.dart/categorymodel.dart';
@@ -132,8 +134,20 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Category'),
-                InkWell(child: Text('See All'), onTap: () {}),
+                 AppText(
+                      text: 'Category',
+                      size: 18,
+                      color: Colors.black ,
+                      weight: FontWeight.normal
+                    ),
+                InkWell(child: 
+                AppText(
+                      text: 'See All',
+                      size: 14,
+                      color: AppColors.accent ,
+                      weight: FontWeight.normal
+                    ),
+                 onTap: () {}),
               ],
             ),
             SizedBox(
@@ -289,8 +303,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         });
                                       },
                                       child:Icon(
-  Icons.favorite, // Always use the filled heart icon
-  color: isFav ? Colors.red : Colors.black, // Only change the color
+  Icons.favorite, 
+  color: isFav ? Colors.red : Colors.black, 
   size: 24,
 ),
                                     ),

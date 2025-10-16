@@ -84,7 +84,7 @@ class CategoryData {
     ),
   ];
 
-  // Helper method to get items by category name
+  
   static List<CategoryItem> getItemsByCategory(String categoryName) {
     switch (categoryName.toLowerCase()) {
       case 'fruits':
