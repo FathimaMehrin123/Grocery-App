@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/screens/home.dart';
+import 'package:grocery_app/screens/mainscreen.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -23,9 +24,9 @@ class _LoginscreenState extends State<Loginscreen> {
         height: size.height,
         padding: EdgeInsets.all(10),
         child: Column(
-          children: [Container(
-            child: Image.asset('assets/images/splashimage.jpeg'),
+          children: [SizedBox(
             height: 200,
+            child: Image.asset('assets/images/splashimage.jpeg'),
           ),
           SizedBox(height: 30),
          TextField(
@@ -109,7 +110,7 @@ class _LoginscreenState extends State<Loginscreen> {
              onPressed: (){
               Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                          MaterialPageRoute(builder: (context) => MainScreen()),
                         );
              }),
            ),

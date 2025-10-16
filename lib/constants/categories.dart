@@ -12,7 +12,7 @@ class AppCategories {
 
   // List of category names for tabs
   static const List<String> categoryNames = [
-    all,
+  
     fruits,
     fish,
     meat,
@@ -22,6 +22,21 @@ class AppCategories {
     bakery,
     oil,
   ];
+  static const Map<String, String> categoryImages = {
+   
+    fruits: 'assets/images/pomegranate.png',
+    fish: 'assets/images/fish.png',
+    meat: 'assets/images/meat.png',
+    vegetable: 'assets/images/vegetable.png',
+    rice: 'assets/images/rice.png',
+    chocolate: 'assets/images/chocolate.png',
+    bakery: 'assets/images/bakery.png',
+    oil: 'assets/images/oil.png',
+  };
+
+  static String getCategoryImage(String categoryName) {
+    return categoryImages[categoryName] ?? 'assets/images/all.png';
+  }
 
    
 }

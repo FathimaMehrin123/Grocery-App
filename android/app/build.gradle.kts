@@ -25,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "com.example.grocery_app"
         // Change minSdk to 21 (required for Firebase)
-        minSdk = 21  // Add this line explicitly
+        minSdk = flutter.minSdkVersion  // Add this line explicitly
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

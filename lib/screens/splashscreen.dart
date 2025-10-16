@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/screens/loginscreen.dart';
+import 'package:grocery_app/screens/mainscreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -49,10 +50,10 @@ class _SplashscreenState extends State<Splashscreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Loginscreen()),
-                        );
+                       Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => Loginscreen()),
+);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,

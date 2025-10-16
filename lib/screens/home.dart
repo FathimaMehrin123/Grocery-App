@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app/constants/categories.dart';
 import 'package:grocery_app/data.dart/category_data.dart';
 import 'package:grocery_app/model.dart/categorymodel.dart';
-import 'package:grocery_app/screens/cartscreen.dart';
-import 'package:grocery_app/screens/categoryscreen.dart';
-import 'package:grocery_app/screens/favouritescreen.dart';
-import 'package:grocery_app/screens/profilescreen.dart';
+import 'package:grocery_app/service/cart_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,8 +12,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  CartService cartService = CartService();
   int _selectedCategoryIndex = 0;
-  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,8 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           children: [
             CircleAvatar(
+              radius: 17,
               backgroundColor: Colors.green,
-              child: Icon(Icons.location_city),
+              child: Icon(Icons.place,color: Colors.white),
             ),
             SizedBox(width: 10),
             Text('MG South Kochi'),
@@ -122,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 InkWell(child: Text('See All'), onTap: () {}),
               ],
             ),
-            Container(
+            SizedBox(
               height: 45,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -182,6 +181,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: currentItems.length,
                       itemBuilder: (context, index) {
                         CategoryItem item = currentItems[index];
+                        bool isFav = cartService.isFavourite(item.id);
+
                         return Card(
                           elevation: 2,
                           shape: RoundedRectangleBorder(
@@ -254,28 +255,63 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: Color(0xFF5FB839),
                                             ),
                                           ),
-                                          // Text(
-                                          //   '/${item.unit}',
-                                          //   style: TextStyle(
-                                          //     fontSize: 14,
-                                          //     color: Colors.grey[600],
-                                          //   ),
-                                          // ),
+                                          Text(
+                                            '/${item.unit}',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.grey[600],
+                                            ),
+                                          ),
                                         ],
                                       ),
                                       SizedBox(height: 8),
                                     ],
                                   ),
                                 ),
-                                // Add Button
+                                // Heart and Add Button
                                 Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Icon(Icons.heat_pump_rounded),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          cartService.toggleFavourite(item);
+                                        });
+                                      },
+                                      child: Icon(
+                                        isFav
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: isFav
+                                            ? Colors.red
+                                            : Colors.black,
+                                        size: 24,
+                                      ),
+                                    ),
                                     CircleAvatar(
                                       backgroundColor: Colors.green,
-                                      child: Icon(Icons.add),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          cartService.addToCart(item);
+                                          ScaffoldMessenger.of(
+                                            context,
+                                          ).showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                '${item.name} added to cart',
+                                              ),
+                                              duration: Duration(
+                                                milliseconds: 800,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -288,65 +324,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        
-        backgroundColor: Colors.white,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-            if( _currentIndex ==1){
-               Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Categoryscreen()),
-      );
-            }
-           else  if( _currentIndex ==2){
-               Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Favouritescreen()),
-      );
-            }
-            else if( _currentIndex ==3){
-               Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Cartscreen()),
-      );
-    
-            }else{
-                    Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Profilescreen()),
-      );
-            }
-          });
-          
-        },
-        
-        
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xFF5FB839),
-        unselectedItemColor: Colors.grey,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Category',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favourite',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
       ),
     );
   }

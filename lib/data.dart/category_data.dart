@@ -6,24 +6,28 @@ class CategoryData {
   static const List<CategoryItem> fruitsItems = [
    
       CategoryItem(
+     id: 'apple_1',
       name: 'Apple',
       image: 'assets/images/apple.png',
       price: 100,
       unit: 'kg',
     ),
       CategoryItem(
+          id: 'pomegranate_1',
       name: 'Pomegranate',
       image: 'assets/images/pomegranate.png',
       price: 94,
       unit: 'kg',
     ),
       CategoryItem(
+         id: 'musambi_1',
       name: 'Pomegranate',
       image: 'assets/images/musambi.png',
       price: 65,
       unit: 'kg',
     ),
     CategoryItem(
+       id: 'banana_1',
       name: 'Banana',
       image: 'assets/images/banana.png',
       price: 35,
@@ -44,7 +48,14 @@ class CategoryData {
 
  
   static const List<CategoryItem> vegetableItems = [
-    
+
+     CategoryItem(
+      id: 'tomato_1',
+      name: 'Tomato',
+      image: 'assets/images/tomato.png',
+      price: 32,
+      unit: 'kg',
+    ),
   ];
 
   
@@ -64,7 +75,13 @@ class CategoryData {
 
   
   static const List<CategoryItem> oilItems = [
-   
+    CategoryItem(
+       id: 'sunflower_oil_1',
+      name: 'Sunflower Oil',
+      image: 'assets/images/sunfloweroil.png',
+      price: 146,
+      unit: 'kg',
+    ),
   ];
 
   // Helper method to get items by category name
