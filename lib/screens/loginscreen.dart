@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/screens/home.dart';
+
 import 'package:grocery_app/screens/mainscreen.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -30,12 +30,12 @@ class _LoginscreenState extends State<Loginscreen> {
           ),
           SizedBox(height: 30),
          TextField(
-                    // controller: _emailController,
+                    
                     decoration: InputDecoration(
                       hintText: 'Username',
                       hintStyle: TextStyle(color: Colors.grey[400]),
-                      // filled: true,
-                      // fillColor: Colors.grey[50],
+                      filled: true,
+                      fillColor: Colors.grey[50],
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.grey[300]!),
@@ -48,10 +48,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.green, width: 2),
                       ),
-                      // contentPadding: const EdgeInsets.symmetric(
-                      //   horizontal: 16,
-                      //   vertical: 16,
-                      // ),
+                   
                     ),
                   ),
             SizedBox(height: 30),       
@@ -66,8 +63,8 @@ class _LoginscreenState extends State<Loginscreen> {
                          _obscurePassword = ! _obscurePassword; 
                         });
                       },),
-                      // filled: true,
-                      // fillColor: Colors.grey[50],
+                      filled: true,
+                      fillColor: Colors.grey[50],
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.grey[300]!),
@@ -80,16 +77,13 @@ class _LoginscreenState extends State<Loginscreen> {
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.green, width: 2),
                       ),
-                      // contentPadding: const EdgeInsets.symmetric(
-                      //   horizontal: 16,
-                      //   vertical: 16,
-                      // ),
+                
                     ),
                   ),
                   SizedBox(height: 10), 
          Align(
           alignment: AlignmentGeometry.centerRight,
-          child: TextButton(child: Text('Forgot password') ,onPressed: (){})),
+          child: TextButton(child: Text('Forgot password',style: TextStyle(color: Colors.grey)) ,onPressed: (){})),
          SizedBox(
            width: double.infinity,
            child: ElevatedButton(
@@ -118,9 +112,10 @@ class _LoginscreenState extends State<Loginscreen> {
          SizedBox(height: 20),
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton.icon(onPressed: (){}, label: Text('Continue with google'),style: OutlinedButton.styleFrom(backgroundColor: Colors.grey,shape: RoundedRectangleBorder(
+                    child: OutlinedButton.icon(onPressed: (){}, label: Text('Continue with google',style: TextStyle(color: Colors.black)),style: OutlinedButton.styleFrom(backgroundColor: Colors.grey[50],shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),),
+                      
                     icon: Image.asset(
                       'assets/images/googleimage.png',
                       height: 24,

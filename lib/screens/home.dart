@@ -29,11 +29,26 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         title: Row(
           children: [
-            CircleAvatar(
-              radius: 17,
-              backgroundColor: Colors.green,
-              child: Icon(Icons.place,color: Colors.white),
-            ),
+            Padding(
+  padding: const EdgeInsets.only(left: 8),
+  child: Container(
+    decoration: BoxDecoration(
+      
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.black, width: 1.3),
+    ),
+    child: CircleAvatar(
+      backgroundColor: Colors.white,
+      radius: 15,
+      child: IconButton(
+        icon: Icon(Icons.arrow_back, color: Colors.black, size: 18),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ),
+  ),
+),
             SizedBox(width: 10),
             Text('MG South Kochi'),
             Icon(Icons.keyboard_arrow_down),
@@ -241,8 +256,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       SizedBox(height: 4),
-
-                                      // Price and Unit
+                                    Text('500g'),
+                                      
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -255,13 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               color: Color(0xFF5FB839),
                                             ),
                                           ),
-                                          Text(
-                                            '/${item.unit}',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.grey[600],
-                                            ),
-                                          ),
+                                         
                                         ],
                                       ),
                                       SizedBox(height: 8),
@@ -279,18 +288,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                           cartService.toggleFavourite(item);
                                         });
                                       },
-                                      child: Icon(
-                                        isFav
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                        color: isFav
-                                            ? Colors.red
-                                            : Colors.black,
-                                        size: 24,
-                                      ),
+                                      child:Icon(
+  Icons.favorite, // Always use the filled heart icon
+  color: isFav ? Colors.red : Colors.black, // Only change the color
+  size: 24,
+),
                                     ),
                                     CircleAvatar(
                                       backgroundColor: Colors.green,
+                                      radius: 13,
                                       child: GestureDetector(
                                         onTap: () {
                                           cartService.addToCart(item);

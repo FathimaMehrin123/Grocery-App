@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/constants/appcolor.dart';
+import 'package:grocery_app/constants/apptext.dart';
 import 'package:grocery_app/screens/loginscreen.dart';
 import 'package:grocery_app/screens/mainscreen.dart';
 
@@ -26,20 +28,26 @@ class _SplashscreenState extends State<Splashscreen> {
             SizedBox(height: 30),
             Column(
               children: [
-                Text(
-                  'Shape your',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                const AppText(
+                  text: 'Shape your',
+                  size: 26,
+                  color: AppColors.splashText,
+                  weight: FontWeight.bold,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'daily ',
-                      style: Theme.of(context).textTheme.headlineMedium,
+                   AppText(
+                      text: 'daily ',
+                      size: 26,
+                      color: AppColors.splashText,
+                      weight: FontWeight.bold,
                     ),
-                    Text(
-                      'needs',
-                      style: Theme.of(context).textTheme.headlineMedium,
+                    AppText(
+                      text: 'needs',
+                      size: 26,
+                      color: AppColors.primary,
+                      weight: FontWeight.bold,
                     ),
                   ],
                 ),
@@ -58,7 +66,7 @@ class _SplashscreenState extends State<Splashscreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                       ),
-                      child: Text('Get Started'),
+                      child: Text('Get Started',style: TextStyle(color:  Colors.white),),
                     ),
                   ),
                 ),

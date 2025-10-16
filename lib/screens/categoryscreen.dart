@@ -16,7 +16,26 @@ class _CategoryscreenState extends State<Categoryscreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        
+        leading: Padding(
+  padding: const EdgeInsets.only(left: 8),
+  child: Container(
+    decoration: BoxDecoration(
+      
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.black, width: 1.3),
+    ),
+    child: CircleAvatar(
+      backgroundColor: Colors.white,
+      radius: 8,
+      child: IconButton(
+        icon: Icon(Icons.arrow_back, color: Colors.black, size: 18),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ),
+  ),
+),
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,

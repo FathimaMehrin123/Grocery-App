@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:grocery_app/screens/home.dart';
 import 'package:grocery_app/service/cart_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -55,6 +56,27 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+    leading:      Padding(
+  padding: const EdgeInsets.only(left: 8),
+  child: Container(
+    decoration: BoxDecoration(
+      
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.black, width: 1.3),
+    ),
+    child: CircleAvatar(
+      backgroundColor: Colors.white,
+      radius: 8,
+      child: IconButton(
+        icon: Icon(Icons.arrow_back, color: Colors.black, size: 18),
+        onPressed: () {
+          Navigator.push( context,
+  MaterialPageRoute(builder: (context) => HomeScreen()),);
+        },
+      ),
+    ),
+  ),
+),
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
